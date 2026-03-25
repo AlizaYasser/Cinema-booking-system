@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.example.controllers.RegisterController"
+           style="-fx-background-color: #111318;">
+
+    <!-- Background decorative vertical lines -->
+    <HBox alignment="CENTER" spacing="60" style="-fx-opacity: 0.04;">
+        <Label text="│" style="-fx-font-size: 600; -fx-text-fill: white;"/>
+        <Label text="│" style="-fx-font-size: 600; -fx-text-fill: white;"/>
+        <Label text="│" style="-fx-font-size: 600; -fx-text-fill: white;"/>
+        <Label text="│" style="-fx-font-size: 600; -fx-text-fill: white;"/>
+        <Label text="│" style="-fx-font-size: 600; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Main content -->
+    <HBox alignment="CENTER" spacing="0">
+
+        <!-- Narrow gold left accent bar -->
+        <VBox prefWidth="6" prefHeight="600"
+              style="-fx-background-color: #c9a84c;"/>
+
+        <!-- Form Panel -->
+        <VBox prefWidth="500" alignment="CENTER" spacing="16"
+              style="-fx-background-color: #0e1017;
+                     -fx-padding: 45 50;
+                     -fx-border-color: #2a2d3a;
+                     -fx-border-width: 0 1 0 0;">
+
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label text="✦"
+                       style="-fx-font-size: 18; -fx-text-fill: #c9a84c;"/>
+                <VBox spacing="2">
+                    <Label text="CREATE ACCOUNT"
+                           style="-fx-font-size: 22; -fx-text-fill: #ffffff;
+                                  -fx-font-weight: bold; -fx-letter-spacing: 3;"/>
+                    <Label text="Join the Cinema Booking experience"
+                           style="-fx-font-size: 12; -fx-text-fill: #c8c8d8;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Gold divider -->
+            <HBox>
+                <Region prefHeight="2" prefWidth="60"
+                        style="-fx-background-color: #c9a84c;"/>
+                <Region prefHeight="2" HBox.hgrow="ALWAYS"
+                        style="-fx-background-color: #2a2d3a;"/>
+            </HBox>
+
+            <!-- Full Name -->
+            <VBox spacing="5">
+                <Label text="FULL NAME"
+                       style="-fx-font-size: 10; -fx-text-fill: #c9a84c;
+                              -fx-letter-spacing: 2;"/>
+                <TextField fx:id="fullNameField" promptText="John Doe"
+                           prefWidth="380"
+                           style="-fx-background-color: #1a1d26;
+                                  -fx-text-fill: #ffffff;
+                                  -fx-prompt-text-fill: #7a7f9a;
+                                  -fx-padding: 11 15;
+                                  -fx-font-size: 13;
+                                  -fx-border-color: #3a3f55;
+                                  -fx-border-width: 0 0 1 0;
+                                  -fx-background-radius: 0;"/>
+            </VBox>
+
+            <!-- Email -->
+            <VBox spacing="5">
+                <Label text="EMAIL ADDRESS"
+                       style="-fx-font-size: 10; -fx-text-fill: #c9a84c;
+                              -fx-letter-spacing: 2;"/>
+                <TextField fx:id="emailField" promptText="john@example.com"
+                           prefWidth="380"
+                           style="-fx-background-color: #1a1d26;
+                                  -fx-text-fill: #ffffff;
+                                  -fx-prompt-text-fill: #7a7f9a;
+                                  -fx-padding: 11 15;
+                                  -fx-font-size: 13;
+                                  -fx-border-color: #3a3f55;
+                                  -fx-border-width: 0 0 1 0;
+                                  -fx-background-radius: 0;"/>
+            </VBox>
+
+            <!-- Username -->
+            <VBox spacing="5">
+                <Label text="USERNAME"
+                       style="-fx-font-size: 10; -fx-text-fill: #c9a84c;
+                              -fx-letter-spacing: 2;"/>
+                <TextField fx:id="usernameField" promptText="Choose a username"
+                           prefWidth="380"
+                           style="-fx-background-color: #1a1d26;
+                                  -fx-text-fill: #ffffff;
+                                  -fx-prompt-text-fill: #7a7f9a;
+                                  -fx-padding: 11 15;
+                                  -fx-font-size: 13;
+                                  -fx-border-color: #3a3f55;
+                                  -fx-border-width: 0 0 1 0;
+                                  -fx-background-radius: 0;"/>
+            </VBox>
+
+            <!-- Passwords side by side -->
+            <HBox spacing="15">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="PASSWORD"
+                           style="-fx-font-size: 10; -fx-text-fill: #c9a84c;
+                                  -fx-letter-spacing: 2;"/>
+                    <PasswordField fx:id="passwordField" promptText="Min 6 characters"
+                                   style="-fx-background-color: #1a1d26;
+                                          -fx-text-fill: #ffffff;
+                                          -fx-prompt-text-fill: #7a7f9a;
+                                          -fx-padding: 11 15;
+                                          -fx-font-size: 13;
+                                          -fx-border-color: #3a3f55;
+                                          -fx-border-width: 0 0 1 0;
+                                          -fx-background-radius: 0;"/>
+                </VBox>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="CONFIRM"
+                           style="-fx-font-size: 10; -fx-text-fill: #c9a84c;
+                                  -fx-letter-spacing: 2;"/>
+                    <PasswordField fx:id="confirmPasswordField" promptText="Repeat password"
+                                   style="-fx-background-color: #1a1d26;
+                                          -fx-text-fill: #ffffff;
+                                          -fx-prompt-text-fill: #7a7f9a;
+                                          -fx-padding: 11 15;
+                                          -fx-font-size: 13;
+                                          -fx-border-color: #3a3f55;
+                                          -fx-border-width: 0 0 1 0;
+                                          -fx-background-radius: 0;"/>
+                </VBox>
+            </HBox>
+
+            <Label fx:id="messageLabel" text=""
+                   style="-fx-text-fill: #e05c5c; -fx-font-size: 12;"/>
+
+            <!-- Register Button -->
+            <Button text="CREATE ACCOUNT →" onAction="#handleRegister"
+                    prefWidth="380"
+                    style="-fx-background-color: #c9a84c;
+                           -fx-text-fill: #111318;
+                           -fx-font-size: 12;
+                           -fx-font-weight: bold;
+                           -fx-letter-spacing: 2;
+                           -fx-padding: 13 20;
+                           -fx-cursor: hand;
+                           -fx-background-radius: 0;"/>
+
+            <!-- Back to login -->
+            <HBox alignment="CENTER" spacing="8">
+                <Label text="Already have an account?"
+                       style="-fx-text-fill: #c8c8d8; -fx-font-size: 12;"/>
+                <Button text="Sign In" onAction="#goToLogin"
+                        style="-fx-background-color: transparent;
+                               -fx-text-fill: #c9a84c;
+                               -fx-font-size: 12;
+                               -fx-cursor: hand;
+                               -fx-underline: true;
+                               -fx-border-color: transparent;
+                               -fx-padding: 0;"/>
+            </HBox>
+
+        </VBox>
+
+        <!-- Right decorative panel -->
+        <VBox prefWidth="294" prefHeight="600" alignment="CENTER" spacing="25"
+              style="-fx-background-color: #111318; -fx-padding: 40;">
+
+            <Label text="WHY JOIN US?"
+                   style="-fx-font-size: 11; -fx-text-fill: #c9a84c;
+                          -fx-letter-spacing: 3;"/>
+
+            <!-- Feature 1 -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label text="🎬" style="-fx-font-size: 22;"/>
+                <VBox spacing="3">
+                    <Label text="Easy Booking"
+                           style="-fx-font-size: 13; -fx-text-fill: #ffffff;
+                                  -fx-font-weight: bold;"/>
+                    <Label text="Reserve seats in seconds"
+                           style="-fx-font-size: 11; -fx-text-fill: #c8c8d8;"
+                           wrapText="true"/>
+                </VBox>
+            </HBox>
+
+            <!-- Feature 2 -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label text="🎟️" style="-fx-font-size: 22;"/>
+                <VBox spacing="3">
+                    <Label text="Best Seats"
+                           style="-fx-font-size: 13; -fx-text-fill: #ffffff;
+                                  -fx-font-weight: bold;"/>
+                    <Label text="Pick exactly where you sit"
+                           style="-fx-font-size: 11; -fx-text-fill: #c8c8d8;"
+                           wrapText="true"/>
+                </VBox>
+            </HBox>
+
+            <!-- Feature 3 -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label text="🍿" style="-fx-font-size: 22;"/>
+                <VBox spacing="3">
+                    <Label text="Latest Movies"
+                           style="-fx-font-size: 13; -fx-text-fill: #ffffff;
+                                  -fx-font-weight: bold;"/>
+                    <Label text="Always up to date listings"
+                           style="-fx-font-size: 11; -fx-text-fill: #c8c8d8;"
+                           wrapText="true"/>
+                </VBox>
+            </HBox>
+
+        </VBox>
+
+    </HBox>
+
+</StackPane>

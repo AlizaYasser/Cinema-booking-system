@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.media.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.example.controllers.TitleController"
+           prefWidth="800" prefHeight="600"
+           style="-fx-background-color: #111318;">
+
+    <!-- Video background (clean, no overlays) -->
+    <MediaView fx:id="mediaView"
+               fitWidth="800" fitHeight="600"
+               preserveRatio="false"/>
+
+    <!-- Subtle black overlay for visibility -->
+    <StackPane style="-fx-background-color: rgba(0,0,0,0.35);"/>
+
+    <!-- Content Layer — positioned above video with no background overlays -->
+    <VBox alignment="CENTER" spacing="0"
+          style="-fx-background-color: transparent;">
+
+        <!-- Eyebrow tag -->
+        <Label text="C I N E M A   E X P E R I E N C E"
+               style="-fx-font-size: 10;
+                      -fx-font-family: 'Trebuchet MS';
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #c9a84c;
+                      -fx-letter-spacing: 6;
+                      -fx-padding: 0 0 20 0;
+                      -fx-opacity: 0.9;"/>
+
+        <!-- Glowing gold beam separator -->
+        <Region minHeight="2" maxHeight="2"
+                minWidth="180" maxWidth="180"
+                style="-fx-background-color: linear-gradient(
+                    from 0% 0% to 100% 0%,
+                    rgba(201,168,76,0.0) 0%,
+                    #c9a84c 50%,
+                    rgba(201,168,76,0.0) 100%);
+                       -fx-translate-y: -4;"/>
+
+        <!-- Hero title with gold glow -->
+        <Label text="CineVision"
+               style="-fx-font-size: 64;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #ffffff;
+                      -fx-letter-spacing: 10;
+                      -fx-effect: dropshadow(gaussian, rgba(201,168,76,0.50), 35, 0.0, 0, 5);"/>
+
+        <!-- Subtitle -->
+        <Label text="B  O  O  K  I  N  G"
+               style="-fx-font-size: 13;
+                      -fx-font-family: 'Trebuchet MS';
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #c9a84c;
+                      -fx-letter-spacing: 8;
+                      -fx-padding: 12 0 0 0;"/>
+
+        <!-- Decorative symbols from login page -->
+        <HBox alignment="CENTER" spacing="8" style="-fx-padding: 8 0 0 0;">
+            <Label text="━━━━" style="-fx-text-fill: #c9a84c; -fx-opacity: 0.6;"/>
+            <Label text="✦" style="-fx-text-fill: #c9a84c;"/>
+            <Label text="━━━━" style="-fx-text-fill: #c9a84c; -fx-opacity: 0.6;"/>
+        </HBox>
+
+
+
+        <!-- Tagline -->
+        <Label text="Your premium cinema experience awaits"
+               style="-fx-font-size: 12;
+                      -fx-text-fill: #ffffff;
+                      -fx-padding: 10 0 40 0;"/>
+
+        <!-- CTA Button — matching login page gold -->
+        <Button fx:id="continueBtn"
+                text="ENTER THE EXPERIENCE →"
+                onAction="#handleContinue"
+                visible="false"
+                style="-fx-background-color: #c9a84c;
+                       -fx-text-fill: #111318;
+                       -fx-font-size: 13;
+                       -fx-font-family: 'Trebuchet MS';
+                       -fx-font-weight: bold;
+                       -fx-letter-spacing: 2;
+                       -fx-padding: 13 28;
+                       -fx-cursor: hand;
+                       -fx-background-radius: 4;"/>
+
+    </VBox>
+
+</StackPane>

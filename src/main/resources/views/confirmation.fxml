@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.ConfirmationController"
+      alignment="CENTER" spacing="20"
+      style="-fx-background-color: #111318; -fx-padding: 60;">
+
+    <Label text="✅ Booking Confirmed!"
+           style="-fx-font-size: 28; -fx-text-fill: #c9a84c; -fx-font-weight: bold;"/>
+
+    <VBox spacing="14" alignment="CENTER_LEFT"
+          style="-fx-background-color: #1a1d27; -fx-padding: 30; -fx-background-radius: 10;"
+          maxWidth="500">
+
+        <Label fx:id="movieLabel"
+               style="-fx-font-size: 15; -fx-text-fill: #ffffff;"/>
+        <Label fx:id="cinemaLabel"
+               style="-fx-font-size: 15; -fx-text-fill: #ffffff;"/>
+        <Label fx:id="seatsLabel"
+               style="-fx-font-size: 15; -fx-text-fill: #ffffff;"/>
+        <Label fx:id="totalLabel"
+               style="-fx-font-size: 15; -fx-text-fill: #c9a84c; -fx-font-weight: bold;"/>
+        <Label fx:id="userLabel"
+               style="-fx-font-size: 13; -fx-text-fill: #a0a8c0;"/>
+    </VBox>
+
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="🎬 Book Another Movie"
+                onAction="#goToMovies"
+                style="-fx-background-color: #c9a84c; -fx-text-fill: #111318;
+                       -fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;"/>
+        <Button text="📋 My Bookings"
+                onAction="#goToDashboard"
+                style="-fx-background-color: #1a1d27; -fx-text-fill: #c9a84c;
+                       -fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;
+                       -fx-border-color: #c9a84c; -fx-border-radius: 4;"/>
+        <Button text="🚪 Logout"
+                onAction="#handleLogout"
+                style="-fx-background-color: #2a2d3a; -fx-text-fill: #ffffff;
+                       -fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;"/>
+    </HBox>
+
+</VBox>
