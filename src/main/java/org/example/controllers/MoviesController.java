@@ -102,6 +102,17 @@ public class MoviesController implements Initializable {
     }
 
     @FXML
+    private void handleMyBookings() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/dashboard.fxml"));
+            Stage stage = (Stage) moviesGrid.getScene().getWindow();
+            stage.setScene(new Scene(loader.load(), 900, 650));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void handleLogout() {
         SessionManager.logout();
         try {

@@ -31,8 +31,9 @@
                               -fx-letter-spacing: 1; -fx-cursor: hand;"/>
                 <Label text="  |  " style="-fx-text-fill: #3a3f55;"/>
                 <Label text="MY BOOKINGS"
+                       onMouseClicked="#handleMyBookings"
                        style="-fx-text-fill: #c8c8d8; -fx-font-size: 11;
-                              -fx-letter-spacing: 1; -fx-cursor: hand;"/>
+              -fx-letter-spacing: 1; -fx-cursor: hand;"/>
 
                 <Region prefWidth="20"/>
                 <Label fx:id="welcomeLabel" text=""

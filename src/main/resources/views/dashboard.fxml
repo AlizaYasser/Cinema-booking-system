@@ -3,74 +3,141 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.controllers.DashboardController"
-      spacing="20" alignment="TOP_CENTER"
-      style="-fx-background-color: #111318; -fx-padding: 40;">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controllers.DashboardController"
+            style="-fx-background-color: #111318;"
+            prefWidth="1000" prefHeight="700"
+            stylesheets="@/cinema-style.css">
 
-    <!-- ── Header ─────────────────────────────────────────────────── -->
-    <HBox alignment="CENTER_LEFT" spacing="20">
-        <Label text="🎟 My Bookings"
-               style="-fx-font-size: 26; -fx-text-fill: #c9a84c; -fx-font-weight: bold;"/>
-        <Region HBox.hgrow="ALWAYS"/>
-        <Label fx:id="welcomeLabel"
-               style="-fx-font-size: 14; -fx-text-fill: #a0a8c0;"/>
-    </HBox>
+    <!-- ══ NAV BAR ══ -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: #0e1017;
+                     -fx-padding: 15 30;
+                     -fx-border-color: #2a2d3a;
+                     -fx-border-width: 0 0 1 0;">
+            <VBox alignment="CENTER_LEFT">
+                <Label text="CINEMA"
+                       style="-fx-font-size: 18; -fx-text-fill: #ffffff;
+                              -fx-font-weight: bold; -fx-letter-spacing: 6;"/>
+                <Label text="BOOKING"
+                       style="-fx-font-size: 9; -fx-text-fill: #c9a84c;
+                              -fx-letter-spacing: 4;"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="NOW SHOWING"
+                   onMouseClicked="#goToCinema"
+                   style="-fx-text-fill: #c8c8d8; -fx-font-size: 11;
+                          -fx-letter-spacing: 1; -fx-cursor: hand;"/>
+            <Label text="  |  " style="-fx-text-fill: #3a3f55;"/>
+            <Label text="MY BOOKINGS"
+                   style="-fx-text-fill: #c9a84c; -fx-font-size: 11;
+                          -fx-letter-spacing: 1;"/>
+            <Region prefWidth="20"/>
+            <Label fx:id="welcomeLabel"
+                   style="-fx-font-size: 12; -fx-text-fill: #c8c8d8;"/>
+            <Button text="LOGOUT" onAction="#handleLogout"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #c9a84c; -fx-font-size: 11;
+                           -fx-letter-spacing: 1; -fx-cursor: hand;
+                           -fx-border-color: #c9a84c; -fx-border-width: 1;
+                           -fx-padding: 6 14; -fx-background-radius: 2;
+                           -fx-border-radius: 2;"/>
+        </HBox>
+    </top>
 
-    <!-- ── Booking count / status ─────────────────────────────────── -->
-    <Label fx:id="bookingCountLabel"
-           text="Loading..."
-           style="-fx-font-size: 13; -fx-text-fill: #c9a84c;"/>
+    <!-- ══ MAIN CONTENT ══ -->
+    <center>
+        <VBox spacing="0" style="-fx-padding: 32 36; -fx-background-color: #111318;">
 
-    <!-- ── Error label (hidden by default) ───────────────────────── -->
-    <Label fx:id="errorLabel"
-           visible="false"
-           wrapText="true"
-           style="-fx-font-size: 12; -fx-text-fill: #e05050;"/>
+            <!-- Page header -->
+            <VBox spacing="4" style="-fx-padding: 0 0 20 0;">
+                <Label text="MY BOOKING HISTORY"
+                       style="-fx-font-size: 10; -fx-text-fill: #c9a84c;
+                              -fx-letter-spacing: 4;"/>
+                <Label text="Your Reserved Seats"
+                       style="-fx-font-size: 28; -fx-text-fill: #ffffff;
+                              -fx-font-weight: bold;"/>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="━━━━"
+                           style="-fx-text-fill: #c9a84c; -fx-opacity: 0.7;"/>
+                    <Label fx:id="bookingCountLabel" text="Loading your bookings..."
+                           style="-fx-font-size: 13; -fx-text-fill: #a0a8c0;
+                                  -fx-font-style: italic;"/>
+                </HBox>
+            </VBox>
 
-    <!-- ── Booking history table ─────────────────────────────────── -->
-    <TableView fx:id="bookingTable"
-               VBox.vgrow="ALWAYS"
-               style="-fx-background-color: #1a1d27; -fx-border-color: #2a2d3a;
-                      -fx-border-radius: 8; -fx-background-radius: 8;">
+            <!-- Error label -->
+            <Label fx:id="errorLabel" visible="false" wrapText="true"
+                   style="-fx-font-size: 12; -fx-text-fill: #e05050;
+                          -fx-padding: 0 0 10 0;"/>
 
-        <columns>
-            <TableColumn fx:id="colMovie"    text="🎬 Movie"    prefWidth="240"
-                         style="-fx-text-fill: #ffffff;"/>
-            <TableColumn fx:id="colCinema"   text="🏛 Cinema"   prefWidth="180"
-                         style="-fx-text-fill: #ffffff;"/>
-            <TableColumn fx:id="colSeat"     text="💺 Seat"     prefWidth="80"
-                         style="-fx-text-fill: #ffffff;"/>
-            <TableColumn fx:id="colShowtime" text="🕐 Showtime" prefWidth="140"
-                         style="-fx-text-fill: #ffffff;"/>
-        </columns>
+            <!-- Table -->
+            <TableView fx:id="bookingTable"
+                       VBox.vgrow="ALWAYS"
+                       styleClass="booking-table"
+                       style="-fx-background-color: #1a1d27;
+                              -fx-border-color: #3a3f55;
+                              -fx-border-width: 1;
+                              -fx-control-inner-background: #1a1d27;
+                              -fx-control-inner-background-alt: #202530;">
 
-        <placeholder>
-            <Label text="No bookings found. Book your first movie!"
-                   style="-fx-text-fill: #a0a8c0; -fx-font-size: 13;"/>
-        </placeholder>
-    </TableView>
+                <columns>
+                    <TableColumn fx:id="colMovie"    text="MOVIE"    prefWidth="280"/>
+                    <TableColumn fx:id="colCinema"   text="CINEMA"   prefWidth="200"/>
+                    <TableColumn fx:id="colSeat"     text="SEAT"     prefWidth="100"/>
+                    <TableColumn fx:id="colShowtime" text="SHOWTIME" prefWidth="180"/>
+                </columns>
 
-    <!-- ── Action buttons ────────────────────────────────────────── -->
-    <HBox spacing="16" alignment="CENTER">
+                <placeholder>
+                    <VBox alignment="CENTER" spacing="8" style="-fx-padding: 40;">
+                        <Label text="No bookings yet"
+                               style="-fx-text-fill: #ffffff; -fx-font-size: 15;
+                                      -fx-font-weight: bold;"/>
+                        <Label text="Your reserved seats will appear here"
+                               style="-fx-text-fill: #a0a8c0; -fx-font-size: 12;"/>
+                    </VBox>
+                </placeholder>
+            </TableView>
 
-        <Button text="🔄 Refresh"
-                onAction="#handleRefresh"
-                style="-fx-background-color: #2a2d3a; -fx-text-fill: #ffffff;
-                       -fx-font-weight: bold; -fx-padding: 10 22;
-                       -fx-background-radius: 6; -fx-cursor: hand;"/>
+            <!-- Action buttons -->
+            <HBox spacing="12" style="-fx-padding: 20 0 0 0;">
+                <Button text="REFRESH" onAction="#handleRefresh"
+                        style="-fx-background-color: transparent;
+                               -fx-text-fill: #c8c8d8; -fx-font-size: 11;
+                               -fx-letter-spacing: 1.5; -fx-cursor: hand;
+                               -fx-border-color: #2a2d3a; -fx-border-width: 1;
+                               -fx-padding: 10 22; -fx-background-radius: 2;
+                               -fx-border-radius: 2;"/>
+                <Button text="BOOK A MOVIE" onAction="#goToCinema"
+                        style="-fx-background-color: #c9a84c;
+                               -fx-text-fill: #111318; -fx-font-size: 11;
+                               -fx-font-weight: bold; -fx-letter-spacing: 1.5;
+                               -fx-cursor: hand; -fx-padding: 10 22;
+                               -fx-background-radius: 2; -fx-border-radius: 2;"/>
+                <Button text="LOGOUT" onAction="#handleLogout"
+                        style="-fx-background-color: transparent;
+                               -fx-text-fill: #e05050; -fx-font-size: 11;
+                               -fx-letter-spacing: 1.5; -fx-cursor: hand;
+                               -fx-border-color: rgba(224,80,80,0.4);
+                               -fx-border-width: 1; -fx-padding: 10 22;
+                               -fx-background-radius: 2; -fx-border-radius: 2;"/>
+            </HBox>
 
-        <Button text="🎬 Book a Movie"
-                onAction="#goToCinema"
-                style="-fx-background-color: #c9a84c; -fx-text-fill: #111318;
-                       -fx-font-weight: bold; -fx-padding: 10 22;
-                       -fx-background-radius: 6; -fx-cursor: hand;"/>
+        </VBox>
+    </center>
 
-        <Button text="🚪 Logout"
-                onAction="#handleLogout"
-                style="-fx-background-color: #3a1a1a; -fx-text-fill: #e05050;
-                       -fx-font-weight: bold; -fx-padding: 10 22;
-                       -fx-background-radius: 6; -fx-cursor: hand;"/>
-    </HBox>
+    <!-- ══ FOOTER ══ -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="30"
+              style="-fx-background-color: #0e1017; -fx-padding: 15;
+                     -fx-border-color: #2a2d3a; -fx-border-width: 1 0 0 0;">
+            <Label text="© 2026 Cinema Booking System"
+                   style="-fx-text-fill: #a0a8c0; -fx-font-size: 11;"/>
+            <Label text="✦" style="-fx-text-fill: #c9a84c;"/>
+            <Label text="All rights reserved"
+                   style="-fx-text-fill: #a0a8c0; -fx-font-size: 11;"/>
+        </HBox>
+    </bottom>
 
-</VBox>
+</BorderPane>
