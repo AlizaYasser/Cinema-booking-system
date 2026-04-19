@@ -71,31 +71,92 @@ public class BookingDAO {
     }
 
     // Get booking history for a user
-    // Returns [movie_name, cinema_name, seat_number, showtime]
     public static List<String[]> getBookingHistory(int userId) {
         List<String[]> history = new ArrayList<>();
-        String sql = "SELECT m.movie_name, c.cinema_name, b.seat_number, m.showtime " +
-                "FROM Bookings b " +
-                "JOIN Movies m  ON b.movie_id  = m.movie_id " +
-                "JOIN Cinemas c ON b.cinema_id = c.cinema_id " +
-                "WHERE b.user_id = ?";
+
+        String sql =
+                "SELECT b.booking_id, m.movie_name, c.cinema_name, b.seat_number, m.showtime " +
+                        "FROM Bookings b " +
+                        "JOIN Movies m ON b.movie_id = m.movie_id " +
+                        "JOIN Cinemas c ON b.cinema_id = c.cinema_id " +
+                        "WHERE b.user_id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
                 history.add(new String[]{
+                        String.valueOf(rs.getInt("booking_id")), // IMPORTANT
                         rs.getString("movie_name"),
                         rs.getString("cinema_name"),
                         rs.getString("seat_number"),
                         rs.getString("showtime")
                 });
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return history;
+    }
+
+    public static int getTotalBookings() {
+        String sql = "SELECT COUNT(*) AS total FROM Bookings";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+    public static double getTotalRevenue() {
+        String sql =
+                "SELECT SUM(m.price) AS revenue " +
+                        "FROM Bookings b " +
+                        "JOIN Movies m ON b.movie_id = m.movie_id";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                return rs.getDouble("revenue");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0.0;
+    }
+
+    public static boolean cancelBooking(int bookingId) {
+        String sql = "DELETE FROM Bookings WHERE booking_id = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, bookingId);
+            int rows = stmt.executeUpdate();
+
+            return rows > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

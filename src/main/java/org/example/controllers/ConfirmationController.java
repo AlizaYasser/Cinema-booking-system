@@ -19,11 +19,11 @@ public class ConfirmationController {
 
     public void setBookingDetails(String movieName, String cinemaName,
                                   List<String> seats, double total) {
-        movieLabel.setText("🎬 Movie:    " + movieName);
-        cinemaLabel.setText("🏛️ Cinema:   " + cinemaName);
-        seatsLabel.setText("💺 Seats:    " + String.join(", ", seats));
-        totalLabel.setText("💰 Total Paid:  $" + String.format("%.2f", total));
-        userLabel.setText("👤 Booked by: " + SessionManager.getCurrentUsername());
+        movieLabel.setText("Movie:    " + movieName);
+        cinemaLabel.setText("Cinema:   " + cinemaName);
+        seatsLabel.setText("Seats:    " + String.join(", ", seats));
+        totalLabel.setText("Total Paid:  $" + String.format("%.2f", total));
+        userLabel.setText("Booked by: " + SessionManager.getCurrentUsername());
     }
 
     @FXML

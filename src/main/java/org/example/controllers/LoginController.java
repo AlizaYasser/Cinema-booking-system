@@ -45,10 +45,20 @@ public class LoginController implements Initializable {
         int userId = UserDAO.loginUser(username, password);
 
         if (userId != -1) {
-            // Save logged-in user to session
+
+            // ✅ Keep YOUR session style
             SessionManager.setCurrentUserId(userId);
             SessionManager.setCurrentUsername(username);
-            goToMovies();
+
+            // ✅ NEW: role check
+            String role = UserDAO.getUserRole(userId);
+
+            if (role.equalsIgnoreCase("ADMIN")) {
+                goToAdminDashboard();
+            } else {
+                goToMovies(); // existing flow
+            }
+
         } else {
             errorLabel.setText("Invalid username or password.");
         }
@@ -68,6 +78,16 @@ public class LoginController implements Initializable {
     private void goToMovies() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/cinema.fxml"));
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.setScene(new Scene(loader.load(), 900, 650));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void goToAdminDashboard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/admin_dashboard.fxml"));
             Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.setScene(new Scene(loader.load(), 900, 650));
         } catch (Exception e) {

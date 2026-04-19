@@ -38,7 +38,7 @@ public class SeatsController implements Initializable {
         bookedSeats = BookingDAO.getBookedSeats(movieId);
 
         if (movieTitleLabel != null) {
-            movieTitleLabel.setText("🎬 " + SessionManager.getCurrentMovieName() + " — Select Your Seats");
+            movieTitleLabel.setText(SessionManager.getCurrentMovieName() + " - Select Your Seats");
         }
         buildSeatGrid();
     }
@@ -167,5 +167,17 @@ public class SeatsController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void refreshSeats() {
+        int movieId = SessionManager.getCurrentMovieId();
+
+        selectedSeats.clear();
+        seatGrid.getChildren().clear();
+
+        bookedSeats = BookingDAO.getBookedSeats(movieId);
+
+        updateSummary();
+        buildSeatGrid();
     }
 }

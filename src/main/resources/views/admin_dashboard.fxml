@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.controllers.AdminDashboardController"
+      style="-fx-background-color: #111318;" prefWidth="900" prefHeight="650">
+
+    <VBox prefWidth="220" style="-fx-background-color: #0e1017; -fx-border-color: #2a2d3a; -fx-border-width: 0 1 0 0;">
+        <VBox alignment="CENTER_LEFT" style="-fx-padding: 30 25;">
+            <Label text="CINEMA" style="-fx-font-size: 18; -fx-text-fill: white; -fx-font-weight: bold; -fx-letter-spacing: 5;"/>
+            <Label text="ADMIN" style="-fx-font-size: 9; -fx-text-fill: #c9a84c; -fx-letter-spacing: 4;"/>
+        </VBox>
+
+        <VBox spacing="10" style="-fx-padding: 10 0;">
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 12 25; -fx-background-color: #1a1d26;">
+                <Label text="●" style="-fx-text-fill: #c9a84c;"/>
+                <Label text="Dashboard" style="-fx-text-fill: white; -fx-font-size: 13;"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="15"
+                  style="-fx-padding: 12 25; -fx-cursor: hand;"
+                  onMouseClicked="#handleAddMovie">
+                <Label text="○" style="-fx-text-fill: #3a3f55;"/>
+                <Label text="Add Movie" style="-fx-text-fill: #c8c8d8; -fx-font-size: 13; -fx-cursor: hand;"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="15"
+                  style="-fx-padding: 12 25; -fx-cursor: hand;"
+                  onMouseClicked="#handleDeleteMovie">
+                <Label text="○" style="-fx-text-fill: #3a3f55;"/>
+                <Label text="Delete Movie" style="-fx-text-fill: #c8c8d8; -fx-font-size: 13; -fx-cursor: hand;"/>
+            </HBox>
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS" />
+
+        <VBox style="-fx-padding: 25;">
+            <Button text="LOGOUT" onAction="#handleLogout" maxWidth="Infinity"
+                    style="-fx-background-color: transparent; -fx-text-fill: #c9a84c; -fx-border-color: #c9a84c; -fx-border-width: 1; -fx-padding: 8; -fx-cursor: hand;"/>
+        </VBox>
+    </VBox>
+
+    <VBox HBox.hgrow="ALWAYS" spacing="0">
+        <HBox alignment="CENTER_LEFT" style="-fx-padding: 20 40; -fx-background-color: #111318; -fx-border-color: #2a2d3a; -fx-border-width: 0 0 1 0;">
+            <VBox>
+                <Label fx:id="welcomeLabel" text="Welcome back, Admin" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+                <Label text="Here is what is happening today" style="-fx-text-fill: #888; -fx-font-size: 11;"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="20" alignment="CENTER">
+                <VBox alignment="CENTER_RIGHT">
+                    <Label text="SYSTEM STATUS" style="-fx-text-fill: #c9a84c; -fx-font-size: 9;"/>
+                    <Label text="ONLINE" style="-fx-text-fill: #27ae60; -fx-font-size: 11; -fx-font-weight: bold;"/>
+                </VBox>
+            </HBox>
+        </HBox>
+
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+            <VBox spacing="30" style="-fx-padding: 40;">
+
+                <HBox spacing="25">
+                    <VBox HBox.hgrow="ALWAYS" spacing="10" style="-fx-background-color: #0e1017; -fx-padding: 25; -fx-border-color: #2a2d3a; -fx-border-radius: 5;">
+                        <Label text="TOTAL BOOKINGS" style="-fx-text-fill: #888; -fx-font-size: 10; -fx-letter-spacing: 1;"/>
+                        <Label fx:id="totalBookingsLabel" text="1,284" style="-fx-text-fill: white; -fx-font-size: 28; -fx-font-weight: bold;"/>
+                    </VBox>
+                    <VBox HBox.hgrow="ALWAYS" spacing="10" style="-fx-background-color: #0e1017; -fx-padding: 25; -fx-border-color: #2a2d3a; -fx-border-radius: 5;">
+                        <Label text="TOTAL REVENUE" style="-fx-text-fill: #888; -fx-font-size: 10; -fx-letter-spacing: 1;"/>
+                        <Label fx:id="totalRevenueLabel" text="12,500.00" style="-fx-text-fill: #c9a84c; -fx-font-size: 28; -fx-font-weight: bold;"/>
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="15">
+                    <Label text="QUICK MANAGEMENT" style="-fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold;"/>
+                    <HBox spacing="20">
+                        <Button onAction="#handleAddMovie" text="+ ADD NEW MOVIE" prefHeight="80" HBox.hgrow="ALWAYS" maxWidth="Infinity"
+                                style="-fx-background-color: #c9a84c; -fx-text-fill: #111318; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 4;"/>
+                        <Button onAction="#handleDeleteMovie" text="× DELETE MOVIE" prefHeight="80" HBox.hgrow="ALWAYS" maxWidth="Infinity"
+                                style="-fx-background-color: #1e1e2a; -fx-text-fill: #c9a84c; -fx-border-color: #c9a84c; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 4; -fx-border-radius: 4;"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="15" style="-fx-background-color: #0e1017; -fx-padding: 25; -fx-border-color: #2a2d3a; -fx-border-radius: 5;">
+                    <Label text="RECENT MOVIES ADDED" style="-fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold;"/>
+                    <VBox fx:id="recentMoviesBox" spacing="10" style="-fx-opacity: 0.6;">
+                        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10; -fx-border-color: #2a2d3a; -fx-border-width: 0 0 1 0;">
+                            <Label text="Interstellar" style="-fx-text-fill: white;" prefWidth="200"/>
+                            <Label text="Sci-Fi" style="-fx-text-fill: #c9a84c;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="Added 2h ago" style="-fx-text-fill: #888;"/>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10;">
+                            <Label text="The Dark Knight" style="-fx-text-fill: white;" prefWidth="200"/>
+                            <Label text="Action" style="-fx-text-fill: #c9a84c;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="Added 5h ago" style="-fx-text-fill: #888;"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </VBox>
+</HBox>

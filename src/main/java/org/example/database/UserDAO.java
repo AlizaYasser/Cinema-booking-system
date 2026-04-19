@@ -62,4 +62,26 @@ public class UserDAO {
         }
         return false;
     }
+
+    // ✅ NEW METHOD (ADMIN SUPPORT)
+    public static String getUserRole(int userId) {
+        String role = "USER"; // default safety
+        String sql = "SELECT role FROM Users WHERE user_id = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                role = rs.getString("role");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("UserDAO.getUserRole error: " + e.getMessage());
+        }
+
+        return role;
+    }
 }

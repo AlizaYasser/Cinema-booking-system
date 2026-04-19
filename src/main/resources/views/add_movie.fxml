@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controllers.AddMovieController"
+            style="-fx-background-color: #111318;"
+            prefWidth="1000" prefHeight="700"
+            stylesheets="@/cinema-style.css">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: #0e1017;
+                     -fx-padding: 15 30;
+                     -fx-border-color: #2a2d3a;
+                     -fx-border-width: 0 0 1 0;">
+            <VBox alignment="CENTER_LEFT">
+                <Label text="CINEMA"
+                       style="-fx-font-size: 18; -fx-text-fill: #ffffff;
+                              -fx-font-weight: bold; -fx-letter-spacing: 6;"/>
+                <Label text="ADMIN PANEL"
+                       style="-fx-font-size: 9; -fx-text-fill: #c9a84c;
+                              -fx-letter-spacing: 4;"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="← BACK TO DASHBOARD" onAction="#handleBack"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #c8c8d8; -fx-font-size: 11;
+                           -fx-letter-spacing: 1; -fx-cursor: hand;
+                           -fx-border-color: #3a3f55; -fx-border-width: 1;
+                           -fx-padding: 6 14; -fx-background-radius: 2;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="0" style="-fx-padding: 32 36; -fx-background-color: #111318;">
+
+            <VBox spacing="4" style="-fx-padding: 0 0 30 0;">
+                <Label text="CATALOG MANAGEMENT"
+                       style="-fx-font-size: 10; -fx-text-fill: #c9a84c;
+                              -fx-letter-spacing: 4;"/>
+                <Label text="Add New Movie"
+                       style="-fx-font-size: 28; -fx-text-fill: #ffffff;
+                              -fx-font-weight: bold;"/>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="━━━━"
+                           style="-fx-text-fill: #c9a84c; -fx-opacity: 0.7;"/>
+                    <Label text="Enter the details below to list a new feature"
+                           style="-fx-font-size: 13; -fx-text-fill: #a0a8c0;
+                                  -fx-font-style: italic;"/>
+                </HBox>
+            </VBox>
+
+            <GridPane hgap="25" vgap="20" style="-fx-background-color: #0e1017; -fx-padding: 40; -fx-border-color: #2a2d3a; -fx-border-radius: 4;">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+
+                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="MOVIE TITLE" style="-fx-text-fill: #c9a84c; -fx-font-size: 10; -fx-letter-spacing: 1;"/>
+                    <TextField fx:id="movieNameField" promptText="e.g. Inception"
+                               style="-fx-background-color: #111318; -fx-text-fill: white; -fx-border-color: #3a3f55; -fx-padding: 10;"/>
+                </VBox>
+
+                <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="CINEMA ID" style="-fx-text-fill: #c9a84c; -fx-font-size: 10; -fx-letter-spacing: 1;"/>
+                    <TextField fx:id="cinemaIdField" promptText="e.g. 1"
+                               style="-fx-background-color: #111318; -fx-text-fill: white; -fx-border-color: #3a3f55; -fx-padding: 10;"/>
+                </VBox>
+
+                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="SHOWTIME" style="-fx-text-fill: #c9a84c; -fx-font-size: 10; -fx-letter-spacing: 1;"/>
+                    <TextField fx:id="showtimeField" promptText="e.g. 09:00 PM"
+                               style="-fx-background-color: #111318; -fx-text-fill: white; -fx-border-color: #3a3f55; -fx-padding: 10;"/>
+                </VBox>
+
+                <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Label text="SHOW DATE"
+                           style="-fx-text-fill: #c9a84c; -fx-font-size: 10; -fx-letter-spacing: 1;"/>
+                    <TextField fx:id="dateField"
+                               promptText="e.g. 2026-04-20"
+                               style="-fx-background-color: #111318; -fx-text-fill: white;
+                      -fx-border-color: #3a3f55; -fx-padding: 10;"/>
+                </VBox>
+
+                <VBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <Label text="PRICE ($)" style="-fx-text-fill: #c9a84c; -fx-font-size: 10; -fx-letter-spacing: 1;"/>
+                    <TextField fx:id="priceField" promptText="e.g. 15.00"
+                               style="-fx-background-color: #111318; -fx-text-fill: white; -fx-border-color: #3a3f55; -fx-padding: 10;"/>
+                </VBox>
+
+
+            </GridPane>
+
+            <VBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 25 0 0 0;">
+                <Label fx:id="statusLabel" text="" style="-fx-font-size: 12;"/>
+                <Button text="REGISTER MOVIE" onAction="#handleAdd"
+                        style="-fx-background-color: #c9a84c;
+                               -fx-text-fill: #111318; -fx-font-size: 11;
+                               -fx-font-weight: bold; -fx-letter-spacing: 1.5;
+                               -fx-cursor: hand; -fx-padding: 12 40;
+                               -fx-background-radius: 2;"/>
+            </VBox>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #0e1017; -fx-padding: 15; -fx-border-color: #2a2d3a; -fx-border-width: 1 0 0 0;">
+            <Label text="© 2026 Admin Management System" style="-fx-text-fill: #a0a8c0; -fx-font-size: 11;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

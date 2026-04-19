@@ -52,7 +52,7 @@ public class MoviesController implements Initializable {
     }
 
     private VBox createMovieCard(String[] movie) {
-        // movie[0]=id, movie[1]=name, movie[2]=showtime, movie[3]=price
+        // movie[0]=id, movie[1]=name, movie[2]=date, movie[3]=time, movie[4]=price
         VBox card = new VBox(8);
         card.setAlignment(Pos.TOP_CENTER);
         card.setPrefWidth(210);
@@ -64,10 +64,10 @@ public class MoviesController implements Initializable {
         title.setStyle("-fx-font-size: 14; -fx-text-fill: #ffffff; -fx-font-weight: bold;");
         title.setWrapText(true);
 
-        Label showtime = new Label("🕐 " + movie[2]);
+        Label showtime = new Label(movie[2] + " | " + movie[3]);
         showtime.setStyle("-fx-font-size: 11; -fx-text-fill: #a0a8c0;");
 
-        Label price = new Label("💰 $" + movie[3]);
+        Label price = new Label("$ " + movie[4]);
         price.setStyle("-fx-font-size: 11; -fx-text-fill: #c9a84c;");
 
         Button bookBtn = new Button("BOOK SEATS");
