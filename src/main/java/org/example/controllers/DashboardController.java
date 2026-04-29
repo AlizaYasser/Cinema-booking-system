@@ -18,9 +18,7 @@ import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
 
-    // ─────────────────────────────────────────────
-    // Table Row Model (UPDATED with bookingId)
-    // ─────────────────────────────────────────────
+
     public static class BookingRow {
 
         private final int bookingId;
@@ -44,9 +42,7 @@ public class DashboardController implements Initializable {
         public String getShowtime() { return showtime; }
     }
 
-    // ─────────────────────────────────────────────
     // FXML
-    // ─────────────────────────────────────────────
     @FXML private Label welcomeLabel;
     @FXML private Label bookingCountLabel;
     @FXML private Label errorLabel;
@@ -57,7 +53,6 @@ public class DashboardController implements Initializable {
     @FXML private TableColumn<BookingRow, String> colSeat;
     @FXML private TableColumn<BookingRow, String> colShowtime;
 
-    // ─────────────────────────────────────────────
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 

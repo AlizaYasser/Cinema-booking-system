@@ -14,7 +14,7 @@ public class DatabaseConnection {
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(URL);
             createTablesIfNotExist();
-            System.out.println("✅ Connected to SQLite successfully.");
+            System.out.println("Connected to SQLite successfully.");
             System.out.println("DB PATH: " + new java.io.File("cinevision.db").getAbsolutePath());
         }
         return connection;

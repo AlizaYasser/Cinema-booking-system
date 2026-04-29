@@ -36,7 +36,7 @@ public class AdminDashboardController {
         totalBookingsLabel.setText(String.valueOf(bookings));
         totalRevenueLabel.setText("$ " + String.format("%.2f", revenue));
 
-        loadRecentMovies(); // 🔥 NEW
+        loadRecentMovies();
     }
 
     private void loadRecentMovies() {

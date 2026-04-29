@@ -25,7 +25,6 @@ public class DeleteMovieController {
     private void loadMovies() {
         movieListView.getItems().clear();
 
-        // NOTE: we will fix DAO method below
         movieData = MovieDAO.getAllMovies();
 
         if (movieData == null || movieData.isEmpty()) {

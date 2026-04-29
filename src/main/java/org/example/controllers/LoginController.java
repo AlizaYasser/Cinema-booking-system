@@ -46,17 +46,15 @@ public class LoginController implements Initializable {
 
         if (userId != -1) {
 
-            // ✅ Keep YOUR session style
             SessionManager.setCurrentUserId(userId);
             SessionManager.setCurrentUsername(username);
 
-            // ✅ NEW: role check
             String role = UserDAO.getUserRole(userId);
 
             if (role.equalsIgnoreCase("ADMIN")) {
                 goToAdminDashboard();
             } else {
-                goToMovies(); // existing flow
+                goToMovies();
             }
 
         } else {

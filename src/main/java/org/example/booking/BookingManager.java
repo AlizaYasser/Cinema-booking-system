@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * BookingManager – Person 3
+ * BookingManager
  * Handles all booking logic:
  *  - Confirms bookings for one or more seats
  *  - Prevents double-booking (seat already taken)
@@ -18,9 +18,6 @@ import java.util.List;
  */
 public class BookingManager {
 
-    // ------------------------------------------------------------------ //
-    //  Inner result class – keeps UI and logic cleanly separated
-    // ------------------------------------------------------------------ //
     public static class BookingResult {
         public enum Status { SUCCESS, SEAT_TAKEN, INVALID_INPUT, DB_ERROR }
 

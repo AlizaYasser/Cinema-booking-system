@@ -63,7 +63,7 @@ public class UserDAO {
         return false;
     }
 
-    // ✅ NEW METHOD (ADMIN SUPPORT)
+    // ADMIN SUPPORT
     public static String getUserRole(int userId) {
         String role = "USER"; // default safety
         String sql = "SELECT role FROM Users WHERE user_id = ?";
