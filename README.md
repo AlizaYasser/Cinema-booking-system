@@ -1,15 +1,15 @@
-# 🎬 CineVision – Multi-Cinema Booking & Management System
+# CineVision – Multi-Cinema Booking & Management System
 
-## 📌 Overview
+## Overview
 CineVision is a JavaFX-based desktop application that allows users to browse movies across multiple cinemas, select seats, and make bookings. It also includes an admin module for managing movies and viewing system statistics.
 
 The system follows the **MVC architecture** and uses the **DAO pattern** for database operations with SQLite.
 
 ---
 
-## 🚀 Features
+## Features
 
-### 👤 User Features
+### User Features
 - User Registration & Login (with password hashing)
 - Cinema selection
 - View movies by cinema
@@ -18,7 +18,7 @@ The system follows the **MVC architecture** and uses the **DAO pattern** for dat
 - View booking history
 - Cancel booking
 
-### 🛠️ Admin Features
+### Admin Features
 - Admin login
 - Add new movies
 - Delete movies
@@ -26,7 +26,7 @@ The system follows the **MVC architecture** and uses the **DAO pattern** for dat
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 - **Language:** Java  
 - **UI:** JavaFX  
 - **Database:** SQLite  
@@ -36,7 +36,7 @@ The system follows the **MVC architecture** and uses the **DAO pattern** for dat
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 src/
@@ -57,7 +57,7 @@ src/
 
 ---
 
-## ⚙️ Setup & Run Instructions
+## Setup & Run Instructions
 
 ### 1. Clone the repository
 ```bash
@@ -88,7 +88,7 @@ cd cinevision
 
 ---
 
-## 🗄️ Database Setup (SQLite)
+## Database Setup (SQLite)
 
 - The project uses **SQLite**
 - Database file will be:
@@ -103,7 +103,7 @@ cd cinevision
 
 ---
 
-## 🔄 System Flow
+## System Flow
 
 1. User registers/logs in  
 2. Selects cinema  
@@ -119,14 +119,14 @@ cd cinevision
 
 ---
 
-## 🧪 Testing
+## Testing
 - Black-box testing (EP, BVA, error guessing)  
 - White-box testing (coverage techniques)  
 - Bug tracking and fixes included  
 
 ---
 
-## 📈 Future Improvements
+## Future Improvements
 - Advanced reporting dashboard  
 - Online payment integration  
 - Movie search & filtering  
@@ -134,7 +134,7 @@ cd cinevision
 
 ---
 
-## 👥 Contributors
+## Contributors
 - Aliza Yasser  
 - Navaira Azmat
 - Madiha Shahzad 
