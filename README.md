@@ -1,5 +1,7 @@
 # CineVision – Multi-Cinema Booking & Management System
 
+![IMAGE](image.png)
+
 ## Overview
 CineVision is a JavaFX-based desktop application that allows users to browse movies across multiple cinemas, select seats, and make bookings. It also includes an admin module for managing movies and viewing system statistics.
 
